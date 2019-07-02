@@ -2,6 +2,7 @@ ofxSharedMemory
 ===============
 
 Addon original made by trentbrooks, here his comments:
+
 Openframeworks example of a memory mapped file (https://en.wikipedia.org/wiki/Memory-mapped_file) for sharing data between multiple applications. Example shows sharing an RGB video feed between 2 seperate OF apps. May be a good alternative to Syphon (http://syphon.v002.info/) for Windows.
 
  Thanks to sloopi & KJ1 on the openframeworks forum for introducing me to 'memory mapped files' - http://forum.openframeworks.cc/index.php/topic,11730.msg55510.html#msg55510
