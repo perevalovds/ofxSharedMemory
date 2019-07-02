@@ -1,6 +1,11 @@
 ofxSharedMemory
 ===============
 
+Addon for working with shared memory.
+
+src-without-of folder contains ofxSharedMemory_universal.h file, allowing to work with shared memory in any C++ project,
+without openFrameworks, for example, in Unreal Engine 4 C++ project.
+
 Addon original made by trentbrooks, here his comments:
 
 Openframeworks example of a memory mapped file (https://en.wikipedia.org/wiki/Memory-mapped_file) for sharing data between multiple applications. Example shows sharing an RGB video feed between 2 seperate OF apps. May be a good alternative to Syphon (http://syphon.v002.info/) for Windows.
