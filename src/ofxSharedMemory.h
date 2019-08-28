@@ -13,7 +13,8 @@
 
 
 /*
- ofxSharedMemory by Trent Brooks
+ ofxSharedMemory by perevalovds 
+ (originally by Trent Brooks)
  Openframeworks example of a memory mapped file for sharing data between multiple applications.
  - https://en.wikipedia.org/wiki/Memory-mapped_file
  
