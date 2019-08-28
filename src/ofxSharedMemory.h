@@ -117,9 +117,9 @@ bool ofxSharedMemory<T>::connect() {
         
         if(isServer) {
             // server must use CreateFileMapping
-            hMapFile = CreateFileMapping(INVALID_HANDLE_VALUE, NULL, PAGE_READWRITE, 0, memorySize, tMemoryKey.c_str());
+            hMapFile = CreateFileMappingW(INVALID_HANDLE_VALUE, NULL, PAGE_READWRITE, 0, memorySize, tMemoryKey.c_str());
         } else {
-            hMapFile = OpenFileMapping(FILE_MAP_ALL_ACCESS, false, tMemoryKey.c_str());
+            hMapFile = OpenFileMappingW(FILE_MAP_ALL_ACCESS, false, tMemoryKey.c_str());
         }
         if(hMapFile == NULL) {
             isReady = false;
