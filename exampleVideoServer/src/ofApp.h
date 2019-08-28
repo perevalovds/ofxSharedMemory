@@ -26,6 +26,5 @@ class ofApp : public ofBaseApp{
     bool isConnected;
 	ofTexture texture; // created from memory mapped file
     
-	// server uses the ofVideoGrabber
-    ofVideoGrabber video;
+    ofVideoPlayer video;
 };

@@ -2,18 +2,18 @@
 
 
 /*
- Sets up a 640x480 rgb video/camera input image as a memory mapped file.
+ Sets up a 1280x720 rgb video/camera input image as a memory mapped file.
  - Can be a server (creates/destroys the video) or client (reads the video).
- - A memory key string "MyVideo640x480" is used to identify the shared memory (you can name change this to whatever you want).
+ - A memory key string "MyVideo" is used to identify the shared memory (you can name change this to whatever you want).
  - The source code is identical for exampleVideoClient and exampleVideoServer, except for the variable below 'isServer'
  */
 
 
 bool isServer = true;
-int videoWidth = 640;
-int videoHeight = 480;
+int videoWidth = 1280;
+int videoHeight = 720;
 int memorySize = videoWidth * videoHeight * 3;
-string memoryKey = "MyVideo640x480";
+string memoryKey = "MyVideo";
 
 
 //--------------------------------------------------------------
@@ -23,8 +23,9 @@ void ofApp::setup(){
     ofSetLogLevel(OF_LOG_VERBOSE);
         
     if(isServer) {
-        //video.setDeviceID(1);
-        video.initGrabber(videoWidth,videoHeight);
+		video.load("video-ofxShadertoy.mp4");
+		video.setLoopState(OF_LOOP_NORMAL);
+		video.play();
     }
 
     texture.allocate(videoWidth,videoHeight, GL_RGB);
@@ -58,12 +59,12 @@ void ofApp::update(){
         if(video.isFrameNew()) {
             
             // copy pixel data from video into the memory mapped file buffer
-            if(isConnected) memoryMappedFile.setData(video.getPixels());
+            if(isConnected) memoryMappedFile.setData(video.getPixels().getPixels());
             
             // not required for server, but loading the memory mapped file data back into a texture for sanity check
             //texture.loadData(memoryMappedFile.getData(), videoWidth, videoHeight, GL_RGB);
 
-            texture.loadData(video.getPixels(), videoWidth, videoHeight, GL_RGB);
+            texture.loadData(video.getPixels().getPixels(), videoWidth, videoHeight, GL_RGB);
         }
     } else {
         
