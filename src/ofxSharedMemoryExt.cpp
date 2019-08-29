@@ -64,15 +64,23 @@ void ofxSharedMemoryExt::send(vector<unsigned char> &data) {
 }
 
 //---------------------------------------------------------------------------
-void ofxSharedMemoryExt::receive(vector<unsigned char> &data) {
+const unsigned char *ofxSharedMemoryExt::get_data() {
+	if (is_connected_) {
+		return memory_file_.getData();
+	}
+}
+
+//---------------------------------------------------------------------------
+bool ofxSharedMemoryExt::receive(vector<unsigned char> &data) {
 	if (is_connected_) {
 		unsigned char* pdata = memory_file_.getData();
 		data.resize(memory_size_);
 		for (int i = 0; i < memory_size_; i++) {
 			data[i] = pdata[i];
 		}
+		return true;
 	}
-
+	return false;
 }
 
 //---------------------------------------------------------------------------

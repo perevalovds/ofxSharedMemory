@@ -17,7 +17,11 @@ struct ofxSharedMemoryExt {
 
 	void update();	//call 'update' for auto reconnection
 	void send(vector<unsigned char> &data);
-	void receive(vector<unsigned char> &data);
+
+	//use for "faster" receiving, without copying
+	const unsigned char *get_data();
+	//receive with copying - more thread safe
+	bool receive(vector<unsigned char> &data);
 
 	bool is_connected();
 
@@ -39,5 +43,6 @@ protected:
 	float reconnect_time_sec = 1;
 
 	float time_;	//last reconnect time
+
 };
 
