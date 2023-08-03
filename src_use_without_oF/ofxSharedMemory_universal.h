@@ -103,7 +103,8 @@ void ofxSharedMemory<T>::setup(std::string memoryKey, int memorySize, bool isSer
 template <typename T>
 void ofxSharedMemory<T>::close() {
     
-    if(isServer) {
+	if (isServer && isReady) {
+		isReady = false;
         #ifdef _WIN32
             UnmapViewOfFile(sharedData);
             CloseHandle(hMapFile);
